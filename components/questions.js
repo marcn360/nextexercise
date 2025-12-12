@@ -5,14 +5,19 @@ import ScoreModal from './scoreModal'
 
 const Questions = ({ quizzes }) => {
   const [open, setOpen] = useState(false)
-  const [score, setScore] =useState()
+  const [score, setScore] = useState()
   const [answers, setAnswers] = useState(() => {
     return quizzes.map(quiz => {
       return { id: quiz.id, answers: null }
     })
   })
 
-  const updateAnswers = (id, a) => {
+  const updateAnswers = (id, a, isStringArray) => {
+    if (isStringArray) {
+      a=a.map(value => {
+        return { answer: value }
+      })
+    }
     setAnswers((prevAnswers) => {
       const answersSet = [...prevAnswers]
       answersSet[id - 1].answers = a
@@ -21,7 +26,6 @@ const Questions = ({ quizzes }) => {
   }
 
   const submit = async () => {
-    // console.log({answers})
     const endpoint = 'https://honoquiz.cardosamarcnelson.workers.dev/api/grade'
     try {
       const response = await fetch(endpoint, {
@@ -47,7 +51,7 @@ const Questions = ({ quizzes }) => {
           Submit
         </button>
       </div>
-      <ScoreModal open={open} onClose={()=>setOpen(false)} score={score}></ScoreModal>
+      <ScoreModal open={open} onClose={() => setOpen(false)} score={score}></ScoreModal>
     </ul>
   )
 }

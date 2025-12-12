@@ -14,7 +14,7 @@ const Question = ({ id, type, question, choices, updateAnswers }) => {
     else {
       selectedValues = selectedValues.filter(item => item !== value)
     }
-    updateAnswers(id, selectedValues)
+    updateAnswers(id, selectedValues, true)
   }
 
   const updateTextAnswer = (e) => {
