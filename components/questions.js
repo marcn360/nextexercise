@@ -43,6 +43,11 @@ const Questions = ({ quizzes }) => {
     }
   }
 
+  const close = () =>{
+    setOpen(false)
+    window.location.reload()
+  }
+
   return (
     <ul>
       {quizzes.map((quiz, index) => <Question key={index} id={quiz.id} type={quiz.type} question={quiz.question} choices={quiz.choices} updateAnswers={updateAnswers}></Question>)}
@@ -51,7 +56,7 @@ const Questions = ({ quizzes }) => {
           Submit
         </button>
       </div>
-      <ScoreModal open={open} onClose={() => setOpen(false)} score={score}></ScoreModal>
+      <ScoreModal open={open} onClose={close} score={score}></ScoreModal>
     </ul>
   )
 }

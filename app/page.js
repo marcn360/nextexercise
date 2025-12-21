@@ -10,9 +10,9 @@ const page = async () => {
         <p className='md:text-2xl text-xl'>"Ready for a quick knowledge check? Quiz App offers a sleek, intuitive platform for testing your trivia and expertise. Answer the questions, and see your results instantly. Quick to play, easy to master.</p>
       </div>
   
-      <div className='justify-center flex mx-5 mt-9'>
-        <Image src="/reactQuiz.png" width={400} height={350} alt='Quiz App' className='rounded rounded-lg'></Image>
-      </div>
+      <a href='/Quiz' className='justify-center flex mx-5 mt-9'>
+        <Image src="/reactQuiz.png" width={400} height={350} alt='Quiz App' className='rounded-lg'></Image>
+      </a>
     </div>
   )
 }
